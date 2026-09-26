@@ -11,7 +11,7 @@ export function Field({ label, children, hint }: { label: string; children: Reac
     <label className="block">
       <span className="eyebrow !text-[0.58rem] text-mist">{label}</span>
       <div className="mt-2">{children}</div>
-      {hint ? <span className="mt-1.5 block text-[0.66rem] text-bone/30">{hint}</span> : null}
+      {hint ? <span className="mt-1.5 block text-[0.66rem] text-ink/30">{hint}</span> : null}
     </label>
   );
 }
@@ -77,7 +77,7 @@ export function LinesArea({
         rows={rows}
         className="field-input resize-y font-mono2 text-xs leading-relaxed"
       />
-      <span className="mt-1.5 block text-[0.66rem] text-bone/30">{hint ?? "One item per line."}</span>
+      <span className="mt-1.5 block text-[0.66rem] text-ink/30">{hint ?? "One item per line."}</span>
     </div>
   );
 }
@@ -94,7 +94,7 @@ export function Select({
   return (
     <select value={value} onChange={(e) => onChange(e.target.value)} className="field-input appearance-none">
       {options.map((o) => (
-        <option key={o.value} value={o.value} className="bg-carbon">
+        <option key={o.value} value={o.value} className="bg-white">
           {o.label}
         </option>
       ))}
@@ -118,15 +118,15 @@ export function Toggle({
       className="flex items-center gap-3"
     >
       <span
-        className={`relative h-6 w-11 rounded-full transition-colors duration-300 ${checked ? "bg-gold" : "bg-bone/15"}`}
+        className={`relative h-6 w-11 rounded-full transition-colors duration-300 ${checked ? "bg-brass" : "bg-ink/15"}`}
       >
         <span
-          className={`absolute top-0.5 size-5 rounded-full bg-ink transition-all duration-300 ${
-            checked ? "left-[1.4rem]" : "left-0.5 bg-bone/60"
+          className={`absolute top-0.5 size-5 rounded-full bg-white shadow-sm transition-all duration-300 ${
+            checked ? "left-[1.4rem]" : "left-0.5"
           }`}
         />
       </span>
-      <span className="text-xs text-bone/70">{label}</span>
+      <span className="text-xs text-ink/70">{label}</span>
     </button>
   );
 }
@@ -143,11 +143,11 @@ export function Card({
   actions?: ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-bone/[0.08] bg-carbon/70 p-6 md:p-8">
+    <section className="rounded-2xl border border-ink/[0.08] bg-white/70 p-6 md:p-8">
       <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h3 className="font-display text-lg text-bone">{title}</h3>
-          {description ? <p className="mt-1 text-xs leading-relaxed text-bone/40">{description}</p> : null}
+          <h3 className="font-display text-lg text-ink">{title}</h3>
+          {description ? <p className="mt-1 text-xs leading-relaxed text-ink/40">{description}</p> : null}
         </div>
         {actions}
       </div>
@@ -172,7 +172,7 @@ export function SaveBar({
     <motion.div
       initial={{ opacity: 0, y: -14 }}
       animate={{ opacity: 1, y: 0 }}
-      className="sticky top-[72px] z-30 mb-8 flex items-center justify-between gap-4 rounded-xl border border-gold/40 bg-ink/90 px-5 py-3.5 backdrop-blur-xl"
+      className="sticky top-[72px] z-30 mb-8 flex items-center justify-between gap-4 rounded-xl border border-gold/40 bg-white/90 px-5 py-3.5 backdrop-blur-xl"
     >
       <p className="flex items-center gap-2.5 text-xs text-gold">
         <span className="size-2 animate-pulse-soft rounded-full bg-gold" />
@@ -181,13 +181,13 @@ export function SaveBar({
       <div className="flex items-center gap-2">
         <button
           onClick={onDiscard}
-          className="inline-flex items-center gap-1.5 rounded-full border border-bone/20 px-4 py-2 text-[0.68rem] font-semibold text-bone/70 transition-colors hover:border-bone/50"
+          className="inline-flex items-center gap-1.5 rounded-full border border-ink/20 px-4 py-2 text-[0.68rem] font-semibold text-ink/70 transition-colors hover:border-ink/50"
         >
           <RotateCcw size={12} /> Discard
         </button>
         <button
           onClick={onSave}
-          className="inline-flex items-center gap-1.5 rounded-full bg-gold px-5 py-2 text-[0.68rem] font-semibold text-ink transition-colors hover:bg-gold-soft"
+          className="inline-flex items-center gap-1.5 rounded-full bg-gold px-5 py-2 text-[0.68rem] font-semibold text-white transition-colors hover:bg-gold-soft"
         >
           <Save size={12} /> Save &amp; Publish
         </button>
@@ -200,7 +200,7 @@ export function LiveChip({ live }: { live: boolean }) {
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.6rem] font-semibold uppercase tracking-[0.14em] ${
-        live ? "bg-gold/15 text-gold" : "bg-bone/[0.07] text-bone/45"
+        live ? "bg-gold/15 text-gold" : "bg-ink/[0.07] text-ink/45"
       }`}
     >
       <Check size={11} strokeWidth={3} />

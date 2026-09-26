@@ -67,7 +67,7 @@ export function CaseStudiesEditor({
       <div>
         <button
           onClick={create}
-          className="mb-4 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-gold px-4 py-3 text-[0.7rem] font-semibold text-ink hover:bg-gold-soft"
+          className="mb-4 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-gold px-4 py-3 text-[0.7rem] font-semibold text-white hover:bg-gold-soft"
         >
           <Plus size={13} /> New case study
         </button>
@@ -77,7 +77,7 @@ export function CaseStudiesEditor({
               key={c.slug}
               onClick={() => setSel(c.slug)}
               className={`w-full rounded-xl border p-4 text-left transition-all ${
-                sel === c.slug ? "border-gold/60 bg-gold/[0.07]" : "border-bone/[0.08] bg-carbon/60 hover:border-bone/25"
+                sel === c.slug ? "border-gold/60 bg-gold/[0.07]" : "border-ink/[0.08] bg-white/60 hover:border-ink/25"
               }`}
             >
               <div className="flex items-center gap-2.5">
@@ -86,7 +86,7 @@ export function CaseStudiesEditor({
                 </span>
                 <div className="min-w-0">
                   <p className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-gold">{c.industry}</p>
-                  <p className="mt-0.5 line-clamp-1 font-display text-[0.92rem] text-bone">{c.headline}</p>
+                  <p className="mt-0.5 line-clamp-1 font-display text-[0.92rem] text-ink">{c.headline}</p>
                 </div>
               </div>
             </button>
@@ -95,15 +95,15 @@ export function CaseStudiesEditor({
       </div>
 
       {cs ? (
-        <div className="rounded-2xl border border-bone/[0.08] bg-carbon/70 p-6 md:p-8">
+        <div className="rounded-2xl border border-ink/[0.08] bg-white/70 p-6 md:p-8">
           <div className="mb-7 flex items-center justify-between">
-            <p className="font-mono2 text-[0.65rem] text-bone/35">/case-studies/{cs.slug}</p>
+            <p className="font-mono2 text-[0.65rem] text-ink/35">/case-studies/{cs.slug}</p>
             <button
               onClick={() => {
                 update((d) => (d.caseStudies = d.caseStudies.filter((x) => x.slug !== cs.slug)));
                 setSel(null);
               }}
-              className="inline-flex items-center gap-1.5 rounded-full border border-red-400/30 px-3.5 py-2 text-[0.65rem] font-semibold text-red-300 hover:bg-red-400/10"
+              className="inline-flex items-center gap-1.5 rounded-full border border-red-400/30 px-3.5 py-2 text-[0.65rem] font-semibold text-red-600 hover:bg-red-400/10"
             >
               <Trash2 size={12} /> Delete
             </button>
@@ -195,8 +195,8 @@ export function CaseStudiesEditor({
           </div>
         </div>
       ) : (
-        <div className="hidden min-h-[380px] place-items-center rounded-2xl border border-dashed border-bone/12 lg:grid">
-          <p className="font-display text-xl font-light text-bone/50">Select a case study to edit</p>
+        <div className="hidden min-h-[380px] place-items-center rounded-2xl border border-dashed border-ink/12 lg:grid">
+          <p className="font-display text-xl font-light text-ink/50">Select a case study to edit</p>
         </div>
       )}
     </div>
@@ -233,7 +233,7 @@ export function CareersEditor({ draft, update }: { draft: SiteContent; update: U
               })
             )
           }
-          className="inline-flex items-center gap-1.5 rounded-full border border-bone/20 px-3.5 py-2 text-[0.65rem] font-semibold text-bone/70 hover:border-gold hover:text-gold"
+          className="inline-flex items-center gap-1.5 rounded-full border border-ink/20 px-3.5 py-2 text-[0.65rem] font-semibold text-ink/70 hover:border-gold hover:text-gold"
         >
           <Plus size={12} /> Add posting
         </button>
@@ -243,9 +243,9 @@ export function CareersEditor({ draft, update }: { draft: SiteContent; update: U
         {draft.jobs.map((job) => {
           const i = draft.jobs.indexOf(job);
           return (
-            <div key={job.id} className="space-y-4 rounded-xl border border-bone/[0.08] p-5">
+            <div key={job.id} className="space-y-4 rounded-xl border border-ink/[0.08] p-5">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <span className={`rounded-full px-3 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.14em] ${job.status === "open" ? "bg-emerald-400/15 text-emerald-300" : "bg-bone/[0.08] text-bone/45"}`}>
+                <span className={`rounded-full px-3 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.14em] ${job.status === "open" ? "bg-emerald-400/15 text-emerald-700" : "bg-ink/[0.08] text-ink/45"}`}>
                   {job.status}
                 </span>
                 <div className="flex items-center gap-2">
@@ -256,7 +256,7 @@ export function CareersEditor({ draft, update }: { draft: SiteContent; update: U
                   />
                   <button
                     onClick={() => update((d) => d.jobs.splice(i, 1))}
-                    className="grid size-8 place-items-center rounded-lg border border-bone/10 text-bone/40 hover:border-red-400/40 hover:text-red-300"
+                    className="grid size-8 place-items-center rounded-lg border border-ink/10 text-ink/40 hover:border-red-400/40 hover:text-red-600"
                     aria-label="Remove posting"
                   >
                     <Trash2 size={13} />
@@ -348,35 +348,35 @@ export function MediaLibrary({ draft, update }: { draft: SiteContent; update: Up
           </Field>
           <button
             onClick={add}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-[0.7rem] font-semibold text-ink hover:bg-gold-soft"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-[0.7rem] font-semibold text-white hover:bg-gold-soft"
           >
             <CloudUpload size={14} /> Upload
           </button>
         </div>
-        {err && <p className="mt-3 rounded-lg border border-red-400/30 bg-red-400/10 px-4 py-2.5 text-xs text-red-300">{err}</p>}
+        {err && <p className="mt-3 rounded-lg border border-red-400/30 bg-red-400/10 px-4 py-2.5 text-xs text-red-600">{err}</p>}
       </Card>
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
         {draft.media.map((m) => (
-          <div key={m.id} className="group overflow-hidden rounded-xl border border-bone/[0.08] bg-carbon/70">
+          <div key={m.id} className="group overflow-hidden rounded-xl border border-ink/[0.08] bg-white/70">
             <div className="img-frame aspect-[4/3]">
               <img src={m.url} alt={m.alt} loading="lazy" className="size-full object-cover" />
             </div>
             <div className="space-y-3 p-4">
-              <p className="line-clamp-2 text-[0.68rem] leading-relaxed text-bone/55" title={m.alt}>
+              <p className="line-clamp-2 text-[0.68rem] leading-relaxed text-ink/55" title={m.alt}>
                 {m.alt}
               </p>
               <div className="flex items-center gap-1.5">
                 <button
                   onClick={() => copy(m.url, m.id)}
-                  className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-bone/10 py-2 text-[0.62rem] font-semibold text-bone/60 hover:border-gold hover:text-gold"
+                  className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-ink/10 py-2 text-[0.62rem] font-semibold text-ink/60 hover:border-gold hover:text-gold"
                 >
                   {copied === m.id ? <Check size={11} /> : <Copy size={11} />}
                   {copied === m.id ? "Copied" : "Copy URL"}
                 </button>
                 <button
                   onClick={() => update((d) => (d.media = d.media.filter((x) => x.id !== m.id)))}
-                  className="grid size-8 shrink-0 place-items-center rounded-lg border border-bone/10 text-bone/40 hover:border-red-400/40 hover:text-red-300"
+                  className="grid size-8 shrink-0 place-items-center rounded-lg border border-ink/10 text-ink/40 hover:border-red-400/40 hover:text-red-600"
                   aria-label="Remove media"
                 >
                   <Trash2 size={12} />
@@ -394,9 +394,9 @@ export function MediaLibrary({ draft, update }: { draft: SiteContent; update: Up
 
 const typeStyles: Record<string, string> = {
   contact: "bg-gold/15 text-gold",
-  newsletter: "bg-sky-400/15 text-sky-300",
-  resource: "bg-violet-400/15 text-violet-300",
-  career: "bg-emerald-400/15 text-emerald-300",
+  newsletter: "bg-sky-400/15 text-sky-700",
+  resource: "bg-violet-400/15 text-violet-700",
+  career: "bg-emerald-400/15 text-emerald-700",
 };
 
 export function SubmissionsLog({ readOnly }: { readOnly: boolean }) {
@@ -421,9 +421,9 @@ export function SubmissionsLog({ readOnly }: { readOnly: boolean }) {
           { label: "Resource downloads", value: String(submissions.filter((s) => s.type === "resource").length) },
           { label: "Sync issues", value: String(failed), warn: failed > 0 },
         ].map((s) => (
-          <div key={s.label} className="rounded-2xl border border-bone/[0.08] bg-carbon/70 p-5">
-            <p className={`font-display text-3xl font-light ${s.warn ? "text-red-300" : "text-bone"}`}>{s.value}</p>
-            <p className="mt-1 text-[0.62rem] uppercase tracking-[0.12em] text-bone/40">{s.label}</p>
+          <div key={s.label} className="rounded-2xl border border-ink/[0.08] bg-white/70 p-5">
+            <p className={`font-display text-3xl font-light ${s.warn ? "text-red-600" : "text-ink"}`}>{s.value}</p>
+            <p className="mt-1 text-[0.62rem] uppercase tracking-[0.12em] text-ink/40">{s.label}</p>
           </div>
         ))}
       </div>
@@ -437,7 +437,7 @@ export function SubmissionsLog({ readOnly }: { readOnly: boolean }) {
               onClick={() => {
                 if (window.confirm("Delete ALL form submissions? This cannot be undone.")) clearSubmissions();
               }}
-              className="inline-flex items-center gap-1.5 rounded-full border border-red-400/30 px-3.5 py-2 text-[0.65rem] font-semibold text-red-300 transition-colors hover:bg-red-400/10"
+              className="inline-flex items-center gap-1.5 rounded-full border border-red-400/30 px-3.5 py-2 text-[0.65rem] font-semibold text-red-600 transition-colors hover:bg-red-400/10"
             >
               <Trash2 size={12} /> Clear log
             </button>
@@ -446,8 +446,8 @@ export function SubmissionsLog({ readOnly }: { readOnly: boolean }) {
       >
         {submissions.length === 0 ? (
           <div className="flex flex-col items-center gap-3 py-10 text-center">
-            <Inbox size={20} className="text-bone/25" />
-            <p className="text-xs text-bone/40">No submissions yet — they appear here the moment a site form is submitted.</p>
+            <Inbox size={20} className="text-ink/25" />
+            <p className="text-xs text-ink/40">No submissions yet — they appear here the moment a site form is submitted.</p>
           </div>
         ) : (
           <div className="space-y-2.5">
@@ -455,16 +455,16 @@ export function SubmissionsLog({ readOnly }: { readOnly: boolean }) {
               const hasIssue = s.slack === "failed" || s.pipedrive === "failed";
               const open = expanded === s.id;
               return (
-                <div key={s.id} className={`rounded-xl border ${hasIssue ? "border-red-400/25" : "border-bone/[0.08]"} bg-bone/[0.02]`}>
+                <div key={s.id} className={`rounded-xl border ${hasIssue ? "border-red-400/25" : "border-ink/[0.08]"} bg-ink/[0.02]`}>
                   <button
                     onClick={() => setExpanded(open ? null : s.id)}
                     className="flex w-full flex-wrap items-center gap-3 px-5 py-4 text-left"
                   >
-                    <span className={`rounded-full px-2.5 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.12em] ${typeStyles[s.type] ?? "bg-bone/10 text-bone/60"}`}>
+                    <span className={`rounded-full px-2.5 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.12em] ${typeStyles[s.type] ?? "bg-ink/10 text-ink/60"}`}>
                       {s.type}
                     </span>
-                    <span className="min-w-0 flex-1 truncate text-xs font-medium text-bone">{s.summary}</span>
-                    <span className="hidden text-[0.62rem] text-bone/30 md:block">
+                    <span className="min-w-0 flex-1 truncate text-xs font-medium text-ink">{s.summary}</span>
+                    <span className="hidden text-[0.62rem] text-ink/30 md:block">
                       {new Date(s.createdAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}
                     </span>
                     <span className="flex items-center gap-1.5">
@@ -473,7 +473,7 @@ export function SubmissionsLog({ readOnly }: { readOnly: boolean }) {
                     </span>
                   </button>
                   {open && (
-                    <div className="border-t border-bone/[0.06] px-5 py-4">
+                    <div className="border-t border-ink/[0.06] px-5 py-4">
                       <div className="mb-3 flex items-center justify-between">
                         <p className="text-[0.65rem] uppercase tracking-[0.14em] text-mist">
                           Purpose tag: <span className="text-gold">{s.purpose}</span>
@@ -482,7 +482,7 @@ export function SubmissionsLog({ readOnly }: { readOnly: boolean }) {
                           {hasIssue && !readOnly && (
                             <button
                               onClick={() => resend(s.id)}
-                              className="inline-flex items-center gap-1.5 rounded-full bg-gold px-3.5 py-1.5 text-[0.62rem] font-semibold text-ink hover:bg-gold-soft"
+                              className="inline-flex items-center gap-1.5 rounded-full bg-gold px-3.5 py-1.5 text-[0.62rem] font-semibold text-white hover:bg-gold-soft"
                             >
                               {sent === s.id ? <Check size={11} /> : <Send size={11} />}
                               {sent === s.id ? "Re-sent" : "Re-send sync"}
@@ -491,7 +491,7 @@ export function SubmissionsLog({ readOnly }: { readOnly: boolean }) {
                           {!readOnly && (
                             <button
                               onClick={() => deleteSubmission(s.id)}
-                              className="inline-flex items-center gap-1.5 rounded-full border border-red-400/30 px-3.5 py-1.5 text-[0.62rem] font-semibold text-red-300 transition-colors hover:bg-red-400/10"
+                              className="inline-flex items-center gap-1.5 rounded-full border border-red-400/30 px-3.5 py-1.5 text-[0.62rem] font-semibold text-red-600 transition-colors hover:bg-red-400/10"
                             >
                               <Trash2 size={11} /> Delete
                             </button>
@@ -501,12 +501,12 @@ export function SubmissionsLog({ readOnly }: { readOnly: boolean }) {
                       <dl className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
                         {Object.entries(s.detail).map(([k, v]) => (
                           <div key={k} className="flex gap-2 text-[0.72rem]">
-                            <dt className="shrink-0 font-semibold text-bone/50">{k}:</dt>
-                            <dd className="break-words text-bone/75">{v}</dd>
+                            <dt className="shrink-0 font-semibold text-ink/50">{k}:</dt>
+                            <dd className="break-words text-ink/75">{v}</dd>
                           </div>
                         ))}
                         <div className="flex gap-2 text-[0.72rem]">
-                          <dt className="shrink-0 font-semibold text-bone/50">Email:</dt>
+                          <dt className="shrink-0 font-semibold text-ink/50">Email:</dt>
                           <dd className="text-gold">{s.email}</dd>
                         </div>
                       </dl>
@@ -524,7 +524,7 @@ export function SubmissionsLog({ readOnly }: { readOnly: boolean }) {
 
 function SyncChip({ label, ok }: { label: string; ok: boolean }) {
   return (
-    <span className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-[0.56rem] font-semibold uppercase tracking-[0.1em] ${ok ? "bg-emerald-400/10 text-emerald-300" : "bg-red-400/10 text-red-300"}`}>
+    <span className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-[0.56rem] font-semibold uppercase tracking-[0.1em] ${ok ? "bg-emerald-400/10 text-emerald-700" : "bg-red-400/10 text-red-600"}`}>
       <span className={`size-1 rounded-full ${ok ? "bg-emerald-300" : "animate-pulse-soft bg-red-300"}`} />
       {label}
     </span>
@@ -587,7 +587,7 @@ export function UsersRoles() {
           </Field>
           <button
             onClick={invite}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-[0.7rem] font-semibold text-ink hover:bg-gold-soft"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-[0.7rem] font-semibold text-white hover:bg-gold-soft"
           >
             <Plus size={13} /> Invite
           </button>
@@ -601,22 +601,22 @@ export function UsersRoles() {
             <div
               key={u.email}
               className={`flex flex-wrap items-center gap-x-5 gap-y-3 rounded-xl border p-4 transition-colors ${
-                u.active ? "border-bone/[0.08] bg-bone/[0.02]" : "border-bone/[0.05] opacity-50"
+                u.active ? "border-ink/[0.08] bg-ink/[0.02]" : "border-ink/[0.05] opacity-50"
               }`}
             >
               <span className="grid size-9 shrink-0 place-items-center rounded-full bg-gold/15 font-display text-xs text-gold">
                 {u.name.charAt(0)}
               </span>
               <div className="min-w-[11rem]">
-                <p className="text-xs font-semibold text-bone">{u.name}</p>
-                <p className="font-mono2 text-[0.62rem] text-bone/40">{u.email}</p>
-                <p className="mt-1 text-[0.58rem] text-bone/25">
+                <p className="text-xs font-semibold text-ink">{u.name}</p>
+                <p className="font-mono2 text-[0.62rem] text-ink/40">{u.email}</p>
+                <p className="mt-1 text-[0.58rem] text-ink/25">
                   {logins[u.email.toLowerCase()]
                     ? `Last login ${new Date(logins[u.email.toLowerCase()]).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}`
                     : "Never signed in"}
                 </p>
               </div>
-              <p className="hidden max-w-[15rem] flex-1 text-[0.62rem] leading-relaxed text-bone/35 xl:block">
+              <p className="hidden max-w-[15rem] flex-1 text-[0.62rem] leading-relaxed text-ink/35 xl:block">
                 {roleDescriptions[u.role]}
               </p>
               <div className="flex items-center gap-2">
@@ -630,8 +630,8 @@ export function UsersRoles() {
                   onClick={() => setUserActive(u.email, !u.active)}
                   className={`rounded-full px-4 py-2 text-[0.62rem] font-semibold transition-colors disabled:opacity-30 ${
                     u.active
-                      ? "border border-red-400/30 text-red-300 hover:bg-red-400/10"
-                      : "border border-emerald-400/30 text-emerald-300 hover:bg-emerald-400/10"
+                      ? "border border-red-400/30 text-red-600 hover:bg-red-400/10"
+                      : "border border-emerald-400/30 text-emerald-700 hover:bg-emerald-400/10"
                   }`}
                 >
                   {u.active ? "Deactivate" : "Reactivate"}
@@ -641,7 +641,7 @@ export function UsersRoles() {
                     onClick={() => {
                       if (window.confirm(`Permanently delete ${u.name}'s account?`)) removeUser(u.email);
                     }}
-                    className="grid size-8 place-items-center rounded-lg border border-red-400/25 text-red-300/80 transition-colors hover:bg-red-400/10"
+                    className="grid size-8 place-items-center rounded-lg border border-red-400/25 text-red-600/80 transition-colors hover:bg-red-400/10"
                     aria-label={`Delete ${u.name}`}
                     title="Delete account"
                   >
@@ -680,7 +680,7 @@ export function AuditLog({
             onClick={() => {
               if (window.confirm("Clear the entire audit history? Content is not affected, but rollback snapshots are lost.")) onClear();
             }}
-            className="inline-flex items-center gap-1.5 rounded-full border border-red-400/30 px-3.5 py-2 text-[0.65rem] font-semibold text-red-300 transition-colors hover:bg-red-400/10"
+            className="inline-flex items-center gap-1.5 rounded-full border border-red-400/30 px-3.5 py-2 text-[0.65rem] font-semibold text-red-600 transition-colors hover:bg-red-400/10"
           >
             <Trash2 size={12} /> Clear history
           </button>
@@ -689,8 +689,8 @@ export function AuditLog({
     >
       {entries.length === 0 ? (
         <div className="flex flex-col items-center gap-3 py-10 text-center">
-          <Activity size={20} className="text-bone/25" />
-          <p className="text-xs text-bone/40">
+          <Activity size={20} className="text-ink/25" />
+          <p className="text-xs text-ink/40">
             No changes recorded yet. The first Save &amp; Publish will appear here, linked to its commit.
           </p>
         </div>
@@ -698,22 +698,22 @@ export function AuditLog({
         <div className="relative space-y-0">
           {entries.map((e, i) => (
             <div key={e.id} className="relative flex gap-5 pb-6">
-              {i < entries.length - 1 && <span className="absolute left-[15px] top-9 h-full w-px bg-bone/[0.07]" />}
+              {i < entries.length - 1 && <span className="absolute left-[15px] top-9 h-full w-px bg-ink/[0.07]" />}
               <span className="relative z-10 mt-1 grid size-8 shrink-0 place-items-center rounded-full border border-gold/30 bg-ink text-gold">
                 <span className="size-1.5 rounded-full bg-gold" />
               </span>
-              <div className="min-w-0 flex-1 rounded-xl border border-bone/[0.08] bg-bone/[0.02] px-5 py-4">
+              <div className="min-w-0 flex-1 rounded-xl border border-ink/[0.08] bg-ink/[0.02] px-5 py-4">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <p className="text-xs font-semibold text-bone">{e.action}</p>
+                  <p className="text-xs font-semibold text-ink">{e.action}</p>
                   <span className="rounded-full bg-gold/10 px-2.5 py-0.5 text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-gold">
                     {e.module}
                   </span>
-                  <span className="inline-flex items-center gap-1 font-mono2 text-[0.62rem] text-bone/35">
+                  <span className="inline-flex items-center gap-1 font-mono2 text-[0.62rem] text-ink/35">
                     commit
-                    <span className="rounded bg-bone/[0.06] px-1.5 py-0.5 text-gold/80">{e.commit}</span>
+                    <span className="rounded bg-ink/[0.06] px-1.5 py-0.5 text-gold/80">{e.commit}</span>
                   </span>
                 </div>
-                <p className="mt-1.5 text-[0.65rem] text-bone/40">
+                <p className="mt-1.5 text-[0.65rem] text-ink/40">
                   {e.actor} ({e.role}) ·{" "}
                   {new Date(e.at).toLocaleString("en-US", {
                     month: "short",
@@ -730,14 +730,14 @@ export function AuditLog({
                           onRevert(e.id);
                         }
                       }}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-bone/15 px-3.5 py-1.5 text-[0.6rem] font-semibold text-bone/60 transition-colors hover:border-gold hover:text-gold"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 px-3.5 py-1.5 text-[0.6rem] font-semibold text-ink/60 transition-colors hover:border-gold hover:text-gold"
                     >
                       <RotateCcw size={11} /> Revert to this version
                     </button>
                   )}
                   <button
                     onClick={() => onDelete(e.id)}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-red-400/25 px-3.5 py-1.5 text-[0.6rem] font-semibold text-red-300/80 transition-colors hover:bg-red-400/10"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-red-400/25 px-3.5 py-1.5 text-[0.6rem] font-semibold text-red-600/80 transition-colors hover:bg-red-400/10"
                   >
                     <Trash2 size={11} /> Delete entry
                   </button>
@@ -765,7 +765,7 @@ export function PagesEditor({ draft, update }: { draft: SiteContent; update: Upd
           onClick={() =>
             update((d) => d.legal[key].push({ heading: "New section", body: "Section body text goes here." }))
           }
-          className="inline-flex items-center gap-1.5 rounded-full border border-bone/20 px-3.5 py-2 text-[0.65rem] font-semibold text-bone/70 hover:border-gold hover:text-gold"
+          className="inline-flex items-center gap-1.5 rounded-full border border-ink/20 px-3.5 py-2 text-[0.65rem] font-semibold text-ink/70 hover:border-gold hover:text-gold"
         >
           <Plus size={12} /> Add section
         </button>
@@ -773,12 +773,12 @@ export function PagesEditor({ draft, update }: { draft: SiteContent; update: Upd
     >
       <div className="space-y-5">
         {draft.legal[key].map((s, i) => (
-          <div key={i} className="space-y-4 rounded-xl border border-bone/[0.08] p-5">
+          <div key={i} className="space-y-4 rounded-xl border border-ink/[0.08] p-5">
             <div className="flex items-center justify-between">
               <span className="font-mono2 text-[0.65rem] text-gold">Section {String(i + 1).padStart(2, "0")}</span>
               <button
                 onClick={() => update((d) => d.legal[key].splice(i, 1))}
-                className="grid size-8 place-items-center rounded-lg border border-bone/10 text-bone/40 hover:border-red-400/40 hover:text-red-300"
+                className="grid size-8 place-items-center rounded-lg border border-ink/10 text-ink/40 hover:border-red-400/40 hover:text-red-600"
                 aria-label="Remove section"
               >
                 <Trash2 size={13} />
@@ -809,7 +809,7 @@ export function PagesEditor({ draft, update }: { draft: SiteContent; update: Upd
             key={t.id}
             onClick={() => setTab(t.id as typeof tab)}
             className={`rounded-full border px-5 py-2.5 text-[0.68rem] font-semibold uppercase tracking-[0.1em] transition-all ${
-              tab === t.id ? "border-gold bg-gold/10 text-gold" : "border-bone/15 text-bone/50 hover:text-bone"
+              tab === t.id ? "border-gold bg-gold/10 text-gold" : "border-ink/15 text-ink/50 hover:text-ink"
             }`}
           >
             {t.label}

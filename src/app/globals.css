@@ -145,20 +145,21 @@ body {
 /* admin input base */
 .field-input {
   width: 100%;
-  background: rgba(244, 240, 230, 0.04);
-  border: 1px solid rgba(244, 240, 230, 0.12);
+  background: #ffffff;
+  border: 1px solid rgba(19, 19, 22, 0.14);
   border-radius: 0.5rem;
   padding: 0.55rem 0.75rem;
   font-size: 0.8125rem;
-  color: var(--color-bone);
+  color: var(--color-ink);
   outline: none;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 .field-input:focus {
-  border-color: rgba(210, 171, 102, 0.65);
-  background: rgba(244, 240, 230, 0.07);
+  border-color: rgba(176, 138, 62, 0.65);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(176, 138, 62, 0.12);
 }
-.field-input::placeholder { color: #57554e; }
+.field-input::placeholder { color: #a8a49a; }
 
 /* reduced motion */
 @media (prefers-reduced-motion: reduce) {

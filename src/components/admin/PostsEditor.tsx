@@ -93,8 +93,8 @@ export function PostsEditor({
   }, [quickAction?.token]);
 
   const statusStyles: Record<PostStatus, string> = {
-    published: "bg-emerald-400/15 text-emerald-300",
-    draft: "bg-bone/[0.08] text-bone/50",
+    published: "bg-emerald-400/15 text-emerald-700",
+    draft: "bg-ink/[0.08] text-ink/50",
     review: "bg-gold/15 text-gold",
   };
 
@@ -110,7 +110,7 @@ export function PostsEditor({
         )}
         <div className="mb-4 flex items-center gap-2.5">
           <div className="relative flex-1">
-            <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-bone/30" />
+            <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink/30" />
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -120,7 +120,7 @@ export function PostsEditor({
           </div>
           <button
             onClick={createPost}
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gold px-4 py-2.5 text-[0.68rem] font-semibold text-ink hover:bg-gold-soft"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gold px-4 py-2.5 text-[0.68rem] font-semibold text-white hover:bg-gold-soft"
           >
             <Plus size={13} /> New
           </button>
@@ -132,7 +132,7 @@ export function PostsEditor({
               key={s}
               onClick={() => setStatusFilter(s)}
               className={`rounded-full px-3 py-1.5 text-[0.6rem] font-semibold uppercase tracking-[0.1em] transition-colors ${
-                statusFilter === s ? "bg-bone text-ink" : "border border-bone/15 text-bone/45 hover:text-bone"
+                statusFilter === s ? "bg-bone text-ink" : "border border-ink/15 text-ink/45 hover:text-ink"
               }`}
             >
               {s}
@@ -148,7 +148,7 @@ export function PostsEditor({
               className={`w-full rounded-xl border p-4 text-left transition-all duration-300 ${
                 selected === p.slug
                   ? "border-gold/60 bg-gold/[0.07]"
-                  : "border-bone/[0.08] bg-carbon/60 hover:border-bone/25"
+                  : "border-ink/[0.08] bg-white/60 hover:border-ink/25"
               }`}
             >
               <div className="flex items-center gap-2 text-[0.6rem] font-semibold uppercase tracking-[0.14em]">
@@ -158,14 +158,14 @@ export function PostsEditor({
                   {p.status ?? "published"}
                 </span>
               </div>
-              <p className="mt-2 line-clamp-2 font-display text-[0.95rem] leading-snug text-bone">{p.title}</p>
-              <p className="mt-1.5 text-[0.65rem] text-bone/30">
+              <p className="mt-2 line-clamp-2 font-display text-[0.95rem] leading-snug text-ink">{p.title}</p>
+              <p className="mt-1.5 text-[0.65rem] text-ink/30">
                 {p.author} · {formatDate(p.date)}
               </p>
             </button>
           ))}
           {filtered.length === 0 && (
-            <p className="rounded-xl border border-dashed border-bone/15 p-8 text-center text-xs text-bone/35">
+            <p className="rounded-xl border border-dashed border-ink/15 p-8 text-center text-xs text-ink/35">
               {isAuthor ? "You haven't drafted anything yet — hit New to start." : "No insights match."}
             </p>
           )}
@@ -181,21 +181,21 @@ export function PostsEditor({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -10 }}
             transition={{ duration: 0.35 }}
-            className="rounded-2xl border border-bone/[0.08] bg-carbon/70 p-6 md:p-8"
+            className="rounded-2xl border border-ink/[0.08] bg-white/70 p-6 md:p-8"
           >
             <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
               <button
                 onClick={() => setSelected(null)}
-                className="inline-flex items-center gap-1.5 text-xs text-bone/50 hover:text-gold lg:hidden"
+                className="inline-flex items-center gap-1.5 text-xs text-ink/50 hover:text-gold lg:hidden"
               >
                 <ArrowLeft size={13} /> All insights
               </button>
-              <p className="hidden font-mono2 text-[0.65rem] text-bone/35 lg:block">/insights/{post.slug}</p>
+              <p className="hidden font-mono2 text-[0.65rem] text-ink/35 lg:block">/insights/{post.slug}</p>
               <div className="flex flex-wrap items-center gap-3">
                 {isAuthor && (post.status === "draft" || !post.status) && (
                   <button
                     onClick={() => patchPost(post.slug, { status: "review" })}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-gold px-4 py-2 text-[0.65rem] font-semibold text-ink hover:bg-gold-soft"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-gold px-4 py-2 text-[0.65rem] font-semibold text-white hover:bg-gold-soft"
                   >
                     <Send size={11} /> Submit for review
                   </button>
@@ -218,7 +218,7 @@ export function PostsEditor({
                 />
                 <button
                   onClick={() => deletePost(post.slug)}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-red-400/30 px-3.5 py-2 text-[0.65rem] font-semibold text-red-300 transition-colors hover:bg-red-400/10"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-red-400/30 px-3.5 py-2 text-[0.65rem] font-semibold text-red-600 transition-colors hover:bg-red-400/10"
                 >
                   <Trash2 size={12} /> Delete
                 </button>
@@ -284,11 +284,11 @@ export function PostsEditor({
                 <Field label="Cover image URL" hint="Paste a URL from the Media Library or any hosted image.">
                   <div className="grid gap-4 md:grid-cols-[1fr_180px]">
                     <Text value={post.image} onChange={(v) => patchPost(post.slug, { image: v })} />
-                    <div className="img-frame aspect-video overflow-hidden rounded-lg border border-bone/10 bg-ink">
+                    <div className="img-frame aspect-video overflow-hidden rounded-lg border border-ink/10 bg-ink">
                       {post.image ? (
                         <img src={post.image} alt="Cover preview" className="size-full object-cover" />
                       ) : (
-                        <span className="grid size-full place-items-center text-bone/25">
+                        <span className="grid size-full place-items-center text-ink/25">
                           <ImageIcon size={18} />
                         </span>
                       )}
@@ -318,7 +318,7 @@ export function PostsEditor({
               {/* seo */}
               <div className="md:col-span-2 rounded-xl border border-gold/25 bg-gold/[0.04] p-5">
                 <p className="eyebrow !text-[0.58rem] text-gold">SEO & JSON-LD</p>
-                <p className="mt-2 text-[0.65rem] leading-relaxed text-bone/40">
+                <p className="mt-2 text-[0.65rem] leading-relaxed text-ink/40">
                   Overrides feed the page title, meta description and Article structured data. Updating any
                   field automatically stamps the post as updated today.
                 </p>
@@ -339,7 +339,7 @@ export function PostsEditor({
                     />
                   </Field>
                   {post.updatedDate && (
-                    <p className="text-[0.65rem] text-bone/35">
+                    <p className="text-[0.65rem] text-ink/35">
                       Last updated <span className="text-gold">{formatDate(post.updatedDate)}</span>
                     </p>
                   )}
@@ -352,11 +352,11 @@ export function PostsEditor({
             key="empty"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="hidden min-h-[420px] place-items-center rounded-2xl border border-dashed border-bone/12 lg:grid"
+            className="hidden min-h-[420px] place-items-center rounded-2xl border border-dashed border-ink/12 lg:grid"
           >
             <div className="text-center">
-              <p className="font-display text-xl font-light text-bone/50">Select an insight to edit</p>
-              <p className="mt-2 text-xs text-bone/30">or create a new one with the button above.</p>
+              <p className="font-display text-xl font-light text-ink/50">Select an insight to edit</p>
+              <p className="mt-2 text-xs text-ink/30">or create a new one with the button above.</p>
             </div>
           </motion.div>
         )}

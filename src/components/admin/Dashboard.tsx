@@ -47,12 +47,12 @@ export function DashboardView({
             key={s.label}
             onClick={() => go(s.view)}
             className={`group rounded-2xl border p-5 text-left transition-all duration-300 hover:border-gold/40 ${
-              s.accent ? "border-gold/50 bg-gold/[0.06]" : "border-bone/[0.08] bg-carbon/70"
+              s.accent ? "border-gold/50 bg-gold/[0.06]" : "border-ink/[0.08] bg-white/70"
             }`}
           >
             <s.icon size={16} className={s.accent ? "text-gold" : "text-gold/70"} />
-            <p className="mt-4 font-display text-3xl font-light text-bone">{s.value}</p>
-            <p className="mt-1 text-[0.62rem] uppercase leading-snug tracking-[0.12em] text-bone/40">{s.label}</p>
+            <p className="mt-4 font-display text-3xl font-light text-ink">{s.value}</p>
+            <p className="mt-1 text-[0.62rem] uppercase leading-snug tracking-[0.12em] text-ink/40">{s.label}</p>
           </button>
         ))}
       </div>
@@ -72,15 +72,15 @@ export function DashboardView({
             <button
               key={c.id}
               onClick={() => onCreate(c.id)}
-              className="group flex items-center gap-2.5 rounded-xl border border-bone/[0.08] bg-bone/[0.02] px-3.5 py-3 text-left transition-all duration-300 hover:border-gold/50 hover:bg-gold/[0.06]"
+              className="group flex items-center gap-2.5 rounded-xl border border-ink/[0.08] bg-ink/[0.02] px-3.5 py-3 text-left transition-all duration-300 hover:border-gold/50 hover:bg-gold/[0.06]"
             >
-              <span className="grid size-7 shrink-0 place-items-center rounded-lg border border-bone/10 text-bone/45 transition-colors group-hover:border-gold/40 group-hover:text-gold">
+              <span className="grid size-7 shrink-0 place-items-center rounded-lg border border-ink/10 text-ink/45 transition-colors group-hover:border-gold/40 group-hover:text-gold">
                 <c.icon size={12} />
               </span>
-              <span className="min-w-0 flex-1 truncate text-[0.7rem] font-medium text-bone/75 group-hover:text-bone">
+              <span className="min-w-0 flex-1 truncate text-[0.7rem] font-medium text-ink/75 group-hover:text-ink">
                 {c.label}
               </span>
-              <Plus size={12} className="shrink-0 text-bone/25 transition-colors group-hover:text-gold" />
+              <Plus size={12} className="shrink-0 text-ink/25 transition-colors group-hover:text-gold" />
             </button>
           ))}
         </div>
@@ -101,11 +101,11 @@ export function DashboardView({
                   {i < 2 && <span className="absolute left-1/2 top-full h-5 w-px bg-gold/25" />}
                 </span>
                 <div>
-                  <p className="flex items-center gap-2 text-sm font-semibold text-bone">
+                  <p className="flex items-center gap-2 text-sm font-semibold text-ink">
                     <span className="font-mono2 text-[0.6rem] text-gold">{String(i + 1).padStart(2, "0")}</span>
                     {s.step}
                   </p>
-                  <p className="mt-1 text-xs leading-relaxed text-bone/45">{s.text}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-ink/45">{s.text}</p>
                 </div>
               </li>
             ))}
@@ -119,20 +119,20 @@ export function DashboardView({
               <button
                 key={p.slug}
                 onClick={() => go("posts")}
-                className="group flex w-full items-center justify-between gap-4 rounded-xl border border-bone/[0.06] bg-bone/[0.02] px-4 py-3.5 text-left transition-all hover:border-gold/40"
+                className="group flex w-full items-center justify-between gap-4 rounded-xl border border-ink/[0.06] bg-ink/[0.02] px-4 py-3.5 text-left transition-all hover:border-gold/40"
               >
                 <div className="min-w-0">
-                  <p className="truncate text-xs font-semibold text-bone">{p.title}</p>
-                  <p className="mt-1 text-[0.65rem] text-bone/35">
+                  <p className="truncate text-xs font-semibold text-ink">{p.title}</p>
+                  <p className="mt-1 text-[0.65rem] text-ink/35">
                     {p.category} · {formatDate(p.date)}
                     {p.status && p.status !== "published" ? ` · ${p.status.toUpperCase()}` : ""}
                   </p>
                 </div>
-                <ArrowRight size={13} className="shrink-0 text-bone/25 transition-all group-hover:translate-x-0.5 group-hover:text-gold" />
+                <ArrowRight size={13} className="shrink-0 text-ink/25 transition-all group-hover:translate-x-0.5 group-hover:text-gold" />
               </button>
             ))}
           </div>
-          <p className="mt-5 border-t border-bone/[0.06] pt-4 text-[0.65rem] leading-relaxed text-bone/35">
+          <p className="mt-5 border-t border-ink/[0.06] pt-4 text-[0.65rem] leading-relaxed text-ink/35">
             Last published{" "}
             {content.publishedAt
               ? new Date(content.publishedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })
@@ -145,25 +145,25 @@ export function DashboardView({
         <Card title="Recent activity" description="Latest entries from the audit log.">
           {audit.length === 0 ? (
             <div className="flex h-full min-h-[12rem] flex-col items-center justify-center gap-3 text-center">
-              <History size={18} className="text-bone/25" />
-              <p className="max-w-[14rem] text-xs leading-relaxed text-bone/35">
+              <History size={18} className="text-ink/25" />
+              <p className="max-w-[14rem] text-xs leading-relaxed text-ink/35">
                 Nothing yet. Your first publish will land here with a revert snapshot.
               </p>
             </div>
           ) : (
             <div className="space-y-3">
               {audit.slice(0, 5).map((e) => (
-                <div key={e.id} className="flex items-start gap-3 rounded-xl border border-bone/[0.06] bg-bone/[0.02] px-4 py-3">
+                <div key={e.id} className="flex items-start gap-3 rounded-xl border border-ink/[0.06] bg-ink/[0.02] px-4 py-3">
                   <span className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-gold/15 text-gold">
                     <UserRound size={12} />
                   </span>
                   <div className="min-w-0">
-                    <p className="text-xs font-medium text-bone">
-                      {e.action} <span className="text-bone/40">in {e.module}</span>
+                    <p className="text-xs font-medium text-ink">
+                      {e.action} <span className="text-ink/40">in {e.module}</span>
                     </p>
-                    <p className="mt-1 flex items-center gap-2 text-[0.62rem] text-bone/35">
+                    <p className="mt-1 flex items-center gap-2 text-[0.62rem] text-ink/35">
                       {e.actor} · {new Date(e.at).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}
-                      <span className="rounded bg-bone/[0.06] px-1.5 py-0.5 font-mono2 text-gold/70">{e.commit}</span>
+                      <span className="rounded bg-ink/[0.06] px-1.5 py-0.5 font-mono2 text-gold/70">{e.commit}</span>
                     </p>
                   </div>
                 </div>
@@ -195,24 +195,24 @@ export function SettingsView({
         description="This panel uses one unrestricted Administrator account. Every module and every add, edit, publish, delete, sync and revert action is available."
       >
         <div className="grid gap-4 md:grid-cols-3">
-          <div className="rounded-xl border border-bone/[0.08] p-5">
+          <div className="rounded-xl border border-ink/[0.08] p-5">
             <p className="eyebrow !text-[0.58rem] text-mist">Signed in as</p>
-            <p className="mt-2.5 font-display text-lg text-bone">{session?.name}</p>
-            <p className="mt-1 font-mono2 text-[0.68rem] text-bone/40">{session?.email}</p>
+            <p className="mt-2.5 font-display text-lg text-ink">{session?.name}</p>
+            <p className="mt-1 font-mono2 text-[0.68rem] text-ink/40">{session?.email}</p>
           </div>
           <div className="rounded-xl border border-gold/30 bg-gold/[0.05] p-5">
             <p className="eyebrow !text-[0.58rem] text-gold">Access</p>
-            <p className="mt-2.5 flex items-center gap-2 font-display text-lg text-bone">
+            <p className="mt-2.5 flex items-center gap-2 font-display text-lg text-ink">
               <ShieldCheck size={16} className="text-gold" /> Full Administrator
             </p>
-            <p className="mt-1 text-[0.65rem] leading-relaxed text-bone/45">
+            <p className="mt-1 text-[0.65rem] leading-relaxed text-ink/45">
               Nothing is hidden: content, navigation, footer, submissions, sync controls and audit history are all editable.
             </p>
           </div>
-          <div className="rounded-xl border border-bone/[0.08] p-5">
+          <div className="rounded-xl border border-ink/[0.08] p-5">
             <p className="eyebrow !text-[0.58rem] text-mist">Security</p>
-            <p className="mt-2.5 font-display text-lg text-bone">2FA + rate limiting</p>
-            <p className="mt-1 text-[0.65rem] leading-relaxed text-bone/45">
+            <p className="mt-2.5 font-display text-lg text-ink">2FA + rate limiting</p>
+            <p className="mt-1 text-[0.65rem] leading-relaxed text-ink/45">
               Five failed attempts trigger a 60-second lockout, and sign-in requires a verification code.
             </p>
           </div>
@@ -227,7 +227,7 @@ export function SettingsView({
             "Delete submissions & retry failed syncs",
             "Delete audit entries or revert any version",
           ].map((capability) => (
-            <div key={capability} className="flex items-center gap-2 rounded-lg border border-bone/[0.07] bg-bone/[0.02] px-4 py-3 text-[0.7rem] text-bone/60">
+            <div key={capability} className="flex items-center gap-2 rounded-lg border border-ink/[0.07] bg-ink/[0.02] px-4 py-3 text-[0.7rem] text-ink/60">
               <span className="size-1.5 shrink-0 rounded-full bg-gold" />
               {capability}
             </div>
@@ -237,25 +237,25 @@ export function SettingsView({
 
       <Card title="Publishing architecture — Option A (git-backed)" description="Chosen over a live-database model so no database ever serves content in production.">
         <div className="grid gap-4 md:grid-cols-3">
-          <div className="rounded-xl border border-bone/[0.08] bg-bone/[0.02] p-5">
+          <div className="rounded-xl border border-ink/[0.08] bg-ink/[0.02] p-5">
             <p className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-gold">01 · Commit</p>
-            <p className="mt-2.5 text-xs leading-relaxed text-bone/55">
-              On Save &amp; Publish, the panel posts the content snapshot to <span className="font-mono2 text-bone/70">/api/publish</span>,
+            <p className="mt-2.5 text-xs leading-relaxed text-ink/55">
+              On Save &amp; Publish, the panel posts the content snapshot to <span className="font-mono2 text-ink/70">/api/publish</span>,
               which writes it to the Pilot44-owned GitHub repo as a real commit. Configure with{" "}
-              <span className="font-mono2 text-bone/70">GITHUB_TOKEN</span> +{" "}
-              <span className="font-mono2 text-bone/70">GITHUB_REPO</span> (demo commits run without them).
+              <span className="font-mono2 text-ink/70">GITHUB_TOKEN</span> +{" "}
+              <span className="font-mono2 text-ink/70">GITHUB_REPO</span> (demo commits run without them).
             </p>
           </div>
-          <div className="rounded-xl border border-bone/[0.08] bg-bone/[0.02] p-5">
+          <div className="rounded-xl border border-ink/[0.08] bg-ink/[0.02] p-5">
             <p className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-gold">02 · Build</p>
-            <p className="mt-2.5 text-xs leading-relaxed text-bone/55">
-              The commit triggers the <span className="font-mono2 text-bone/70">NETLIFY_BUILD_HOOK</span>; the
+            <p className="mt-2.5 text-xs leading-relaxed text-ink/55">
+              The commit triggers the <span className="font-mono2 text-ink/70">NETLIFY_BUILD_HOOK</span>; the
               static site rebuilds in ~30–90 seconds. Every deploy SHA is shown in the panel topbar and Audit Log.
             </p>
           </div>
-          <div className="rounded-xl border border-bone/[0.08] bg-bone/[0.02] p-5">
+          <div className="rounded-xl border border-ink/[0.08] bg-ink/[0.02] p-5">
             <p className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-gold">03 · Reversible</p>
-            <p className="mt-2.5 text-xs leading-relaxed text-bone/55">
+            <p className="mt-2.5 text-xs leading-relaxed text-ink/55">
               Git history is the undo button — the Audit Log carries a snapshot of every pre-publish state, and
               one click restores it. Media lives in Cloudflare R2; the admin's own store holds only users,
               sessions, submissions and the audit trail — never page content.
@@ -267,10 +267,10 @@ export function SettingsView({
       <Card title="Danger zone" description="Reverts every published change back to the built-in default content.">
         <div className="flex flex-col items-start justify-between gap-5 rounded-xl border border-red-400/25 bg-red-400/[0.05] p-5 sm:flex-row sm:items-center">
           <div className="flex items-start gap-3">
-            <TriangleAlert size={16} className="mt-0.5 shrink-0 text-red-300" />
+            <TriangleAlert size={16} className="mt-0.5 shrink-0 text-red-600" />
             <div>
-              <p className="text-sm font-semibold text-bone">Reset site content to defaults</p>
-              <p className="mt-1 max-w-md text-xs leading-relaxed text-bone/45">
+              <p className="text-sm font-semibold text-ink">Reset site content to defaults</p>
+              <p className="mt-1 max-w-md text-xs leading-relaxed text-ink/45">
                 Clears all published overrides. The public site immediately returns to the original content
                 shipped with the build. Audit history is preserved.
               </p>
@@ -282,7 +282,7 @@ export function SettingsView({
                 onReset();
               }
             }}
-            className="shrink-0 rounded-full border border-red-400/40 px-5 py-2.5 text-[0.7rem] font-semibold text-red-300 transition-colors hover:bg-red-400/10"
+            className="shrink-0 rounded-full border border-red-400/40 px-5 py-2.5 text-[0.7rem] font-semibold text-red-600 transition-colors hover:bg-red-400/10"
           >
             Reset everything
           </button>

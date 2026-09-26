@@ -83,7 +83,7 @@ export function SiteEditor({
       <Card title="Home — Stats band" description="Four proof points beneath the mission.">
         <div className="grid gap-5 md:grid-cols-2">
           {draft.home.stats.map((s, i) => (
-            <div key={i} className="grid grid-cols-[5rem_1fr] gap-3 rounded-xl border border-bone/[0.08] p-4">
+            <div key={i} className="grid grid-cols-[5rem_1fr] gap-3 rounded-xl border border-ink/[0.08] p-4">
               <Field label="Value">
                 <Text
                   value={s.value}
@@ -107,7 +107,7 @@ export function SiteEditor({
         actions={
           <button
             onClick={() => update((d) => d.clients.push("New Client"))}
-            className="inline-flex items-center gap-1.5 rounded-full border border-bone/20 px-3.5 py-2 text-[0.65rem] font-semibold text-bone/70 hover:border-gold hover:text-gold"
+            className="inline-flex items-center gap-1.5 rounded-full border border-ink/20 px-3.5 py-2 text-[0.65rem] font-semibold text-ink/70 hover:border-gold hover:text-gold"
           >
             <Plus size={12} /> Add client
           </button>
@@ -123,7 +123,7 @@ export function SiteEditor({
               />
               <button
                 onClick={() => update((d) => d.clients.splice(i, 1))}
-                className="grid size-9 shrink-0 place-items-center rounded-lg border border-bone/10 text-bone/40 hover:border-red-400/40 hover:text-red-300"
+                className="grid size-9 shrink-0 place-items-center rounded-lg border border-ink/10 text-ink/40 hover:border-red-400/40 hover:text-red-600"
                 aria-label="Remove client"
               >
                 <Trash2 size={13} />
@@ -140,7 +140,7 @@ export function SiteEditor({
               key={t.id}
               onClick={() => setActiveTab(t.id)}
               className={`rounded-full border px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.1em] transition-all ${
-                tab?.id === t.id ? "border-gold bg-gold/10 text-gold" : "border-bone/15 text-bone/50 hover:text-bone"
+                tab?.id === t.id ? "border-gold bg-gold/10 text-gold" : "border-ink/15 text-ink/50 hover:text-ink"
               }`}
             >
               {t.label}
@@ -188,7 +188,7 @@ export function SiteEditor({
       <Card title="Home — Service blocks" description="The three capability blocks with bullet lists.">
         <div className="grid gap-6 lg:grid-cols-3">
           {draft.home.services.map((block, i) => (
-            <div key={block.index} className="space-y-5 rounded-xl border border-bone/[0.08] p-5">
+            <div key={block.index} className="space-y-5 rounded-xl border border-ink/[0.08] p-5">
               <Field label={`Block ${block.index} — title`}>
                 <Text value={block.title} onChange={(v) => update((d) => (d.home.services[i].title = v))} />
               </Field>
@@ -211,7 +211,7 @@ export function SiteEditor({
             onClick={() =>
               update((d) => d.about.values.push({ icon: "sparkles", title: "New value", description: "Describe what this value means in practice." }))
             }
-            className="inline-flex items-center gap-1.5 rounded-full border border-bone/20 px-3.5 py-2 text-[0.65rem] font-semibold text-bone/70 hover:border-gold hover:text-gold"
+            className="inline-flex items-center gap-1.5 rounded-full border border-ink/20 px-3.5 py-2 text-[0.65rem] font-semibold text-ink/70 hover:border-gold hover:text-gold"
           >
             <Plus size={12} /> Add value
           </button>
@@ -219,12 +219,12 @@ export function SiteEditor({
       >
         <div className="grid gap-5 lg:grid-cols-2">
           {draft.about.values.map((v, i) => (
-            <div key={i} className="space-y-4 rounded-xl border border-bone/[0.08] p-5">
+            <div key={i} className="space-y-4 rounded-xl border border-ink/[0.08] p-5">
               <div className="flex items-center justify-between">
                 <span className="font-mono2 text-[0.65rem] text-gold">0{i + 1}</span>
                 <button
                   onClick={() => update((d) => d.about.values.splice(i, 1))}
-                  className="grid size-8 place-items-center rounded-lg border border-bone/10 text-bone/40 hover:border-red-400/40 hover:text-red-300"
+                  className="grid size-8 place-items-center rounded-lg border border-ink/10 text-ink/40 hover:border-red-400/40 hover:text-red-600"
                   aria-label="Remove value"
                 >
                   <Trash2 size={13} />

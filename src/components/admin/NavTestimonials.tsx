@@ -35,7 +35,7 @@ function LinkListEditor({
       actions={
         <button
           onClick={() => setLinks([...links, { label: newLabel, href: "/" }])}
-          className="inline-flex items-center gap-1.5 rounded-full border border-bone/20 px-3.5 py-2 text-[0.65rem] font-semibold text-bone/70 hover:border-gold hover:text-gold"
+          className="inline-flex items-center gap-1.5 rounded-full border border-ink/20 px-3.5 py-2 text-[0.65rem] font-semibold text-ink/70 hover:border-gold hover:text-gold"
         >
           <Plus size={12} /> Add link
         </button>
@@ -44,7 +44,7 @@ function LinkListEditor({
       <div className="space-y-3">
         {links.map((link, i) => (
           <div key={i} className="grid grid-cols-[auto_1fr_1fr_auto] items-center gap-2.5">
-            <span className="font-mono2 text-[0.62rem] text-bone/25">{String(i + 1).padStart(2, "0")}</span>
+            <span className="font-mono2 text-[0.62rem] text-ink/25">{String(i + 1).padStart(2, "0")}</span>
             <input
               value={link.label}
               onChange={(e) => setLinks(links.map((l, j) => (j === i ? { ...l, label: e.target.value } : l)))}
@@ -61,7 +61,7 @@ function LinkListEditor({
               <button
                 onClick={() => move(i, -1)}
                 disabled={i === 0}
-                className="grid size-8 place-items-center rounded-lg border border-bone/10 text-bone/50 hover:border-gold hover:text-gold disabled:opacity-25"
+                className="grid size-8 place-items-center rounded-lg border border-ink/10 text-ink/50 hover:border-gold hover:text-gold disabled:opacity-25"
                 aria-label="Move up"
               >
                 <ArrowUp size={12} />
@@ -69,14 +69,14 @@ function LinkListEditor({
               <button
                 onClick={() => move(i, 1)}
                 disabled={i === links.length - 1}
-                className="grid size-8 place-items-center rounded-lg border border-bone/10 text-bone/50 hover:border-gold hover:text-gold disabled:opacity-25"
+                className="grid size-8 place-items-center rounded-lg border border-ink/10 text-ink/50 hover:border-gold hover:text-gold disabled:opacity-25"
                 aria-label="Move down"
               >
                 <ArrowDown size={12} />
               </button>
               <button
                 onClick={() => setLinks(links.filter((_, j) => j !== i))}
-                className="grid size-8 place-items-center rounded-lg border border-bone/10 text-bone/40 hover:border-red-400/40 hover:text-red-300"
+                className="grid size-8 place-items-center rounded-lg border border-ink/10 text-ink/40 hover:border-red-400/40 hover:text-red-600"
                 aria-label="Remove link"
               >
                 <Trash2 size={12} />
@@ -85,7 +85,7 @@ function LinkListEditor({
           </div>
         ))}
         {links.length === 0 && (
-          <p className="rounded-xl border border-dashed border-bone/15 p-6 text-center text-xs text-bone/35">
+          <p className="rounded-xl border border-dashed border-ink/15 p-6 text-center text-xs text-ink/35">
             No links yet — add one above.
           </p>
         )}
@@ -143,7 +143,7 @@ export function TestimonialsEditor({ draft, update }: { draft: SiteContent; upda
               d.testimonials.push({ quote: "A standout quote from a happy client.", name: "Client name or role", title: "Title", company: "Company" })
             )
           }
-          className="inline-flex items-center gap-1.5 rounded-full border border-bone/20 px-3.5 py-2 text-[0.65rem] font-semibold text-bone/70 hover:border-gold hover:text-gold"
+          className="inline-flex items-center gap-1.5 rounded-full border border-ink/20 px-3.5 py-2 text-[0.65rem] font-semibold text-ink/70 hover:border-gold hover:text-gold"
         >
           <Plus size={12} /> Add testimonial
         </button>
@@ -151,12 +151,12 @@ export function TestimonialsEditor({ draft, update }: { draft: SiteContent; upda
     >
       <div className="space-y-5">
         {draft.testimonials.map((t, i) => (
-          <div key={i} className="space-y-4 rounded-xl border border-bone/[0.08] p-5">
+          <div key={i} className="space-y-4 rounded-xl border border-ink/[0.08] p-5">
             <div className="flex items-center justify-between">
               <span className="font-mono2 text-[0.65rem] text-gold">Quote {i + 1}</span>
               <button
                 onClick={() => update((d) => d.testimonials.splice(i, 1))}
-                className="grid size-8 place-items-center rounded-lg border border-bone/10 text-bone/40 hover:border-red-400/40 hover:text-red-300"
+                className="grid size-8 place-items-center rounded-lg border border-ink/10 text-ink/40 hover:border-red-400/40 hover:text-red-600"
                 aria-label="Remove testimonial"
               >
                 <Trash2 size={13} />
@@ -214,7 +214,7 @@ export function ResourcesEditor({ draft, update }: { draft: SiteContent; update:
               })
             )
           }
-          className="inline-flex items-center gap-1.5 rounded-full border border-bone/20 px-3.5 py-2 text-[0.65rem] font-semibold text-bone/70 hover:border-gold hover:text-gold"
+          className="inline-flex items-center gap-1.5 rounded-full border border-ink/20 px-3.5 py-2 text-[0.65rem] font-semibold text-ink/70 hover:border-gold hover:text-gold"
         >
           <Plus size={12} /> Add resource
         </button>
@@ -222,12 +222,12 @@ export function ResourcesEditor({ draft, update }: { draft: SiteContent; update:
     >
       <div className="space-y-5">
         {draft.resources.map((r, i) => (
-          <div key={r.slug} className="space-y-4 rounded-xl border border-bone/[0.08] p-5">
+          <div key={r.slug} className="space-y-4 rounded-xl border border-ink/[0.08] p-5">
             <div className="flex items-center justify-between">
-              <span className="font-mono2 text-[0.65rem] text-bone/35">/resources/{r.slug}</span>
+              <span className="font-mono2 text-[0.65rem] text-ink/35">/resources/{r.slug}</span>
               <button
                 onClick={() => update((d) => d.resources.splice(i, 1))}
-                className="grid size-8 place-items-center rounded-lg border border-bone/10 text-bone/40 hover:border-red-400/40 hover:text-red-300"
+                className="grid size-8 place-items-center rounded-lg border border-ink/10 text-ink/40 hover:border-red-400/40 hover:text-red-600"
                 aria-label="Remove resource"
               >
                 <Trash2 size={13} />
